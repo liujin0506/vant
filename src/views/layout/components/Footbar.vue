@@ -1,0 +1,47 @@
+<template>
+  <div>
+    <van-tabbar v-if="show" v-model="active">
+      <van-tabbar-item 
+        v-for="(item, index) in footbar"
+        :key="index"
+        :dot="item.num === 0"
+        :info="(item.num > 0) ? item.num : ''"
+        :url="isExternalLink(item.link) ? item.link : ''"
+        :to="!isExternalLink(item.link) ? item.link : ''"
+        :icon="item.icon">{{ item.title }}</van-tabbar-item>
+    </van-tabbar>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex';
+import { validateURL } from '@/utils/validate';
+
+export default {
+  data() {
+    return {
+      active: 0
+    };
+  },
+  components: {
+
+  },
+  computed: {
+    ...mapGetters([
+      'footbar'
+    ]),
+    show() {
+      return !!this.$route.meta.showFoot;
+    }
+  },
+  methods: {
+    isExternalLink(routePath) {
+      return validateURL(routePath);
+    }
+  }
+};
+</script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+
+</style>
