@@ -28,7 +28,6 @@ export default {
   min-height: calc(100vh - 96px);
   position: relative;
   overflow: hidden;
-  background: #f0f2f5;
 }
 .has-nav {
   padding-top: 46px;
