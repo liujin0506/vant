@@ -94,6 +94,8 @@ export default {
       -webkit-box-orient: vertical;
     }
     .price {
+      bottom: 5px;
+      position: absolute;
       .curr {
         color: #E01D26;
       }
