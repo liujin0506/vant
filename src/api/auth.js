@@ -5,3 +5,13 @@ export const OauthLogin = (params) => request({
   method: 'get',
   params: params
 });
+
+export const getInfo = (token) => request({
+  url: '/wechat/userinfo',
+  method: 'post'
+});
+
+export const logout = () => request({
+  url: '/wechat/logout',
+  method: 'post'
+});

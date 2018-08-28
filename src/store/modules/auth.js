@@ -25,7 +25,7 @@ const auth = {
     }
   },
   actions: {
-    LoginWithCode({ commit }, code) {
+    OauthLogin({ commit }, code) {
       return new Promise((resolve, reject) => {
         OauthLogin(code).then(response => {
           const data = response;
