@@ -19,7 +19,6 @@ Object.keys(filters).forEach(key => {
 
 // 微信授权
 import WechatAuth from 'vue-wechat-auth';
-import axios from 'axios';
 // 微信授权插件初始化
 Vue.use(WechatAuth, {
   router, // 路由实例对象
