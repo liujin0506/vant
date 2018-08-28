@@ -34,11 +34,9 @@ Vue.use(WechatAuth, {
     // next说明：next方法接收两个参数
     // 参数1为通过code值请求后端获取到的access_token值，如果获取失败请填入空字符串''
     // 参数2(非必填，默认获取access_token切换到当前路由对象)，指定切换对象 next('/') 或者 next({ path: '/' })
-    axios.get('http://laravel.risay.cn/wechat/auth', {
-      params: {
-        code,
-        state: ''
-      }
+    store.dispatch('OauthLogin', {
+      code,
+      state: ''
     }).then(response => {
       const data = response.data;
       const accessToken = data.data['access_token'];
