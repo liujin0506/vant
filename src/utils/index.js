@@ -309,3 +309,27 @@ export function searchParent(item, list = []) {
   return searchParent(item.parent, list);
 }
 
+/**
+ * 设置浏览器 title
+ * @param title
+ */
+export function title(title = 'admin') {
+  window.document.title = title;
+};
+
+export function getAuthUrl(redirectUri = encodeURIComponent(window.location.href)) {
+  const AppId = process.env.APP_ID;
+  const scope = 'snsapi_userinfo';
+  const authPageBaseUri = process.env.NODE_ENV === 'production' ? 'https://open.weixin.qq.com/connect/oauth2/authorize' : 'http://wx.jd.risay.cn/member/redirect';
+  const authParams = `?appid=${AppId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}#wechat_redirect`;
+  return authPageBaseUri + authParams;
+}
+
+export function getQueryString(name) {
+  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) {
+    return unescape(r[2]);
+  }
+  return null;
+}

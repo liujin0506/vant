@@ -1,17 +1,17 @@
 import request from '@/utils/request';
 
 export const OauthLogin = (params) => request({
-  url: '/wechat/auth',
+  url: '/member/auth',
   method: 'get',
   params: params
 });
 
 export const getInfo = (token) => request({
-  url: '/wechat/userinfo',
-  method: 'post'
+  url: '/member/info',
+  method: 'get'
 });
 
 export const logout = () => request({
-  url: '/wechat/logout',
+  url: '/member/logout',
   method: 'post'
 });

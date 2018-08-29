@@ -3,5 +3,6 @@ var prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  BASE_API: '"http://laravel.risay.cn/"',
+  BASE_API: '"http://wx.jd.risay.cn/"',
+  APP_ID:'"wx64bcdf9da14daba1"',
 })

@@ -3,6 +3,7 @@ const getters = {
   footbar: state => state.app.footbar,
   device: state => state.app.device,
   token: state => state.auth.token,
+  name: state => state.auth.name,
   avatar: state => state.auth.avatar,
   userinfo: state => state.auth.userinfo
 };
