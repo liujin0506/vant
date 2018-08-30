@@ -29,15 +29,8 @@ export const constantRouterMap = [
   {
     path: '',
     component: Layout,
-    redirect: 'dashboard',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
-        name: 'Dashboard',
-        meta: { title: 'dashboard', icon: 'dashboard', showFoot: true }
-      }
-    ]
+    redirect: 'home',
+    children: []
   },
   {
     path: '/home',
@@ -48,7 +41,33 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/home/index'),
         name: 'home/index',
-        meta: { title: 'home', icon: 'home', showFoot: true, auth: true }
+        meta: { title: '首页', icon: 'home', showFoot: true, auth: true }
+      }
+    ]
+  },
+  {
+    path: '/search',
+    component: Layout,
+    redirect: '/search/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/search/index'),
+        name: 'search/index',
+        meta: { title: '找货', icon: 'search', showFoot: true, auth: true }
+      }
+    ]
+  },
+  {
+    path: '/link',
+    component: Layout,
+    redirect: '/link/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/link/index'),
+        name: 'link/index',
+        meta: { title: '找货', icon: 'link', showFoot: true, auth: true }
       }
     ]
   },
