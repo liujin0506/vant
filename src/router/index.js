@@ -87,6 +87,12 @@ export const constantRouterMap = [
         component: () => import('@/views/user/index'),
         name: 'user/index',
         meta: { title: 'user', icon: 'user', showFoot: true, active: 'user' }
+      },
+      {
+        path: 'bind',
+        component: () => import('@/views/user/bind'),
+        name: 'user/bind',
+        meta: { title: '绑定联盟ID', icon: 'user', showFoot: true, showNav: true, active: 'user' }
       }
     ]
   }
