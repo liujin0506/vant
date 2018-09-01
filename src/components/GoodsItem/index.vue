@@ -1,32 +1,26 @@
 <template>
-  <div>
-    <van-card
-      title="标题"
-      desc="描述"  
-      num="2"
-      price="2.00"
-      :thumb="imageURL"
-    >
+  <div @click="goDetail">
+    <van-card :thumb="thumb">
       <div slot="title">
         <div class="title">
           <div class="commission">
             <div class="left">佣金</div>
-            <div class="right">20%</div>
+            <div class="right">{{ commision }}%</div>
           </div>
-          <span class="expire">有效期至 08-08</span>
+          <span class="expire">有效期至 {{ endDay }}</span>
         </div>
       </div>
       <div slot="desc">
-        <div class="desc">标题标题标题标题标题标题标题标题标题标题标题标题</div>
+        <div class="desc">{{ title }}</div>
       </div>
       <div slot="tags">
         <div class="price">
-          <span class="curr">￥9.9</span>
-          <span class="real">￥19.9</span>
+          <span class="curr">￥{{ realPrice }}</span>
+          <span class="real">￥{{ price }}</span>
         </div>
       </div>
       <div slot="footer">
-        <van-button size="mini">一键推广</van-button>
+        <van-button size="mini" @click="doSpread" :disabled="!button">一键推广</van-button>
       </div>
     </van-card>
   </div>
@@ -38,11 +32,33 @@ export default {
   name: 'goods-item',
   data() {
     return {
-      imageURL: '//img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg'
+      button: true
     };
   },
-  props: {
 
+  props: {
+    id: Number,
+    thumb: String,
+    title: String,
+    price: [Number, String],
+    realPrice: [Number, String],
+    discount: [Number, String],
+    endDay: String,
+    commision: [Number, String]
+  },
+
+  methods: {
+    doSpread() {
+      this.$toast({
+        message: '推广成功',
+        forbidClick: true
+      });
+      this.button = false;
+    },
+    goDetail() {
+      const id = this.id;
+      this.$router.push({ path: '/home/detail/' + id });
+    }
   }
 };
 </script>
@@ -113,6 +129,11 @@ export default {
       border: solid 1px #E01D26;
       width: 58px;
       border-radius: 5px;
+    }
+    .van-button--disabled{
+      color: #666;
+      background: #eee;
+      border: solid 1px #eee;
     }
   }
 }

@@ -42,6 +42,12 @@ export const constantRouterMap = [
         component: () => import('@/views/home/index'),
         name: 'home/index',
         meta: { title: '首页', icon: 'home', showFoot: true, auth: true, active: 'home' }
+      },
+      {
+        path: 'detail/:id(\\d+)',
+        component: () => import('@/views/home/detail'),
+        name: 'home/detail',
+        meta: { title: '产品详情', icon: 'home', showFoot: true, auth: true, showNav: true, active: 'home' }
       }
     ]
   },
