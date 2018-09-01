@@ -2,9 +2,9 @@
   <div>
     <van-nav-bar
       v-if="show"
-      title="标题"
-      left-text="返回"
-      right-text="按钮"
+      :title="title"
+      left-text=""
+      right-text=""
       left-arrow
       fixed
       @click-left="onClickLeft"
@@ -19,7 +19,7 @@ import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
-
+      title: this.$route.meta.title
     };
   },
   components: {

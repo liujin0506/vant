@@ -34,6 +34,16 @@ export default {
       return !!this.$route.meta.showFoot;
     }
   },
+  created() {
+    const route = this.$route;
+    let active = this.active;
+    this.footbar.forEach(function(item, index) {
+      if (item.active === route.meta.active) {
+        active = index;
+      }
+    });
+    this.active = active;
+  },
   methods: {
     isExternalLink(routePath) {
       return validateURL(routePath);

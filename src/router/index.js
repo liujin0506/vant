@@ -41,7 +41,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/home/index'),
         name: 'home/index',
-        meta: { title: '首页', icon: 'home', showFoot: true, auth: true }
+        meta: { title: '首页', icon: 'home', showFoot: true, auth: true, active: 'home' }
       }
     ]
   },
@@ -54,7 +54,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/search/index'),
         name: 'search/index',
-        meta: { title: '找货', icon: 'search', showFoot: true, auth: true }
+        meta: { title: '找货', icon: 'search', showFoot: true, auth: true, active: 'search' }
       }
     ]
   },
@@ -67,7 +67,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/link/index'),
         name: 'link/index',
-        meta: { title: '找货', icon: 'link', showFoot: true, auth: true }
+        meta: { title: '万能转链', icon: 'link', showFoot: true, showNav: true, auth: true, active: 'link' }
       }
     ]
   },
@@ -79,8 +79,8 @@ export const constantRouterMap = [
       {
         path: 'index',
         component: () => import('@/views/user/index'),
-        name: 'user',
-        meta: { title: 'user', icon: 'user', showFoot: true }
+        name: 'user/index',
+        meta: { title: 'user', icon: 'user', showFoot: true, active: 'user' }
       }
     ]
   }

@@ -13,9 +13,6 @@
     >
       <div slot="action" @click="onSearch">搜索</div>
     </van-search>
-    <van-tabs>
-      <van-tab v-for="index in 8" :title="'分类' + index" :key="index"></van-tab>
-    </van-tabs>
     <goods-item></goods-item>
     <goods-item></goods-item>
     <goods-item></goods-item>

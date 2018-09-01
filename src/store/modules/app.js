@@ -7,10 +7,10 @@ const app = {
       withoutAnimation: false
     },
     footbar: [
-        { title: '京选', icon: 'points-mall', link: '/' },
-        { title: '找货', icon: 'search', num: 0, link: '/search/index' },
-        { title: '转链', icon: 'exchange-record', link: '/link/index' },
-        { title: '我的', icon: 'contact', link: '/user' }
+        { title: '京选', icon: 'points-mall', link: '/', active: 'home' },
+        { title: '找货', icon: 'search', num: 0, link: '/search/index', active: 'search' },
+        { title: '转链', icon: 'exchange-record', link: '/link/index', active: 'link' },
+        { title: '我的', icon: 'contact', link: '/user/index', active: 'user' }
     ],
     device: 'wechat',
     contentHeight: 0
