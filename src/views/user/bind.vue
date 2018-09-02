@@ -4,10 +4,10 @@
       <img class="user-poster" :src="Userbg">
       <div class="nickname">联盟ID</div>
       <van-cell-group class="input">
-        <van-field v-model="value" placeholder="请输入联盟ID" style="text-align:center;"/>
+        <van-field v-model="union_id" placeholder="请输入联盟ID" style="text-align:center;"/>
       </van-cell-group>
       <div class="btn">
-        <van-button type="danger" size="small" >确定绑定</van-button>
+        <van-button type="danger" size="small" @click="doBind">确定绑定</van-button>
       </div>
 
       <div class="text">
@@ -46,17 +46,33 @@
 <script>
 import Userbg from '@/assets/user_bg.png';
 import Ewm from '@/assets/ewm.png';
+import store from '@/store';
+import { bindUnionid } from '@/api/auth';
 
 export default {
   data() {
     return {
-      value: '',
+      union_id: store.getters.union_id,
       Userbg: Userbg,
       Ewm: Ewm
     };
   },
-  created() {
-    // this.$toast('提示文案');
+  methods: {
+    doBind() {
+      if (this.union_id === '') {
+        this.$toast({ message: '请输入联盟ID', forbidClick: true });
+        return false;
+      }
+      this.$toast.loading({ duration: 0, mask: true, message: '加载中...' });
+      bindUnionid(this.union_id).then((data) => {
+        store.dispatch('GetInfo').then(() => {
+          this.$toast.clear();
+          this.$router.push({ path: '/user/index' });
+        });
+      }).catch(() => {
+        this.$toast.clear();
+      });
+    }
   }
 };
 </script>
@@ -65,7 +81,7 @@ export default {
 .user-bind {
   background: #e5e5e5;
   padding: 10px 20px 0 20px;
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 45px);
   .head {
     background: #fff;
     border-radius: 15px;

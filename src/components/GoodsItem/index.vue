@@ -1,7 +1,10 @@
 <template>
-  <div @click="goDetail">
-    <van-card :thumb="thumb">
-      <div slot="title">
+  <div>
+    <van-card>
+      <div slot="thumb" @click="goDetail">
+        <img :src="thumb">
+      </div>
+      <div slot="title" @click="goDetail">
         <div class="title">
           <div class="commission">
             <div class="left">佣金</div>
@@ -10,10 +13,10 @@
           <span class="expire">有效期至 {{ endDay }}</span>
         </div>
       </div>
-      <div slot="desc">
+      <div slot="desc" @click="goDetail">
         <div class="desc">{{ title }}</div>
       </div>
-      <div slot="tags">
+      <div slot="tags" @click="goDetail">
         <div class="price">
           <span class="curr">￥{{ realPrice }}</span>
           <span class="real">￥{{ price }}</span>
@@ -27,6 +30,7 @@
 </template>
 
 <script>
+import store from '@/store';
 
 export default {
   name: 'goods-item',
@@ -49,6 +53,17 @@ export default {
 
   methods: {
     doSpread() {
+      if (store.getters.union_id === '') {
+        this.$dialog.confirm({
+          title: '提示',
+          message: '您尚未绑定联盟ID，是否绑定？'
+        }).then(() => {
+          this.$router.push({ path: '/user/bind' });
+        }).catch(() => {
+          // on cancel
+        });
+        return false;
+      }
       this.$toast({
         message: '推广成功',
         forbidClick: true

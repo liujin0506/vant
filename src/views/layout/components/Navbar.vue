@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     onClickLeft() {
-      console.log(this.$route);
+      this.$router.go(-1);
     },
     onClickRight() {
 

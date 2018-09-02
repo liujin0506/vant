@@ -6,6 +6,7 @@ const auth = {
     token: getToken(),
     name: '',
     avatar: '',
+    union_id: '',
     userinfo: {}
   },
   mutations: {
@@ -17,6 +18,9 @@ const auth = {
     },
     SET_AVATAR: (state, avatar) => {
       state.avatar = avatar;
+    },
+    SET_UNIONID: (state, union_id) => {
+      state.union_id = union_id;
     },
     SET_USERINFO: (state, userinfo) => {
       state.userinfo = userinfo;
@@ -51,6 +55,7 @@ const auth = {
           commit('SET_NAME', data.user_info.nickname);
           commit('SET_USERINFO', data.user_info);
           commit('SET_AVATAR', data.user_info.avatar);
+          commit('SET_UNIONID', data.user_info.union_id);
           resolve(response);
         }).catch(error => {
           reject(error);

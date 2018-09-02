@@ -11,6 +11,12 @@ export const getInfo = (token) => request({
   method: 'get'
 });
 
+export const bindUnionid = (union_id) => request({
+  url: '/member/bind',
+  method: 'post',
+  data: { union_id: union_id }
+});
+
 export const logout = () => request({
   url: '/member/logout',
   method: 'post'

@@ -16,8 +16,8 @@
       <div class="price">
         <van-tag type="danger">券后价</van-tag> {{ detail.real_price }} <span class="unit">元</span>
       </div>
-      <van-button type="danger" class="btn">一键推广</van-button>
-      <van-button type="danger" class="btn" v-if="0">确认绑定</van-button>
+      <van-button type="danger" class="btn" v-if="unionid !== ''">一键推广</van-button>
+      <van-button type="danger" class="btn" v-if="unionid === ''">确认绑定</van-button>
       <van-button type="danger" class="btn" plain>原始文案</van-button>
     </div>
   </div>
@@ -25,10 +25,12 @@
 
 <script>
 import { getDetail } from '@/api/home';
+import store from '@/store';
 
 export default {
   data() {
     return {
+      unionid: store.getters.union_id,
       loading: false,
       detail: {
         goods_name: '加载中...'

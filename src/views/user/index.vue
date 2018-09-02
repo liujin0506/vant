@@ -3,13 +3,13 @@
     <div class="head">
       <img class="user-poster" :src="Userbg">
       <div class="avatar">
-        <img src="https://avatars2.githubusercontent.com/u/7478813?s=40&v=4" alt="">
+        <img :src="avatar" alt="">
       </div>
-      <div class="nickname">· 联盟ID <span>123456</span> ·</div>
+      <div class="nickname">· 联盟ID <span>{{ union_id }}</span> ·</div>
     </div>
 
     <van-cell-group class="user-group">
-      <van-cell icon="records" title="京东联盟设置" is-link />
+      <van-cell icon="records" title="京东联盟设置" is-link to="/user/bind"/>
       <van-cell icon="exchange" title="新手教程" is-link />
       <van-cell icon="gold-coin" title="我的佣金" is-link />
       <van-cell icon="gift" title="注册京粉" is-link />
@@ -20,15 +20,20 @@
 
 <script>
 import Userbg from '@/assets/user_bg.png';
+import store from '@/store';
 
 export default {
   data() {
     return {
+      avatar: store.getters.avatar,
+      union_id: store.getters.union_id,
       Userbg: Userbg
     };
   },
   created() {
-    // this.$toast('提示文案');
+    if (store.getters.union_id === '') {
+      this.$router.push({ path: '/user/bind' });
+    }
   }
 };
 </script>
