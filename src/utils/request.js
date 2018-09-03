@@ -33,11 +33,21 @@ service.interceptors.response.use(
     error => {
       const data = error.response.data;
       const message = data.message;
-      Dialog.alert({
-        message: message
-      }).then(() => {
-        // on close
-      });
+      if (error.response.status === 401) {
+        Dialog.alert({
+          message: '登录已过期'
+        }).then(() => {
+          store.dispatch('FedLogOut').then(() => {
+            location.reload(); // 为了重新实例化vue-router对象 避免bug
+          });
+        });
+      } else {
+        Dialog.alert({
+          message: message
+        }).then(() => {
+          // on close
+        });
+      }
       return Promise.reject(error);
     }
 );

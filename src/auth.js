@@ -14,7 +14,7 @@ import {
   setAuthCode
 } from '@/utils/auth';
 import { title, getAuthUrl, getQueryString } from '@/utils';
-import { Dialog, Toast } from 'vant';
+import { Dialog } from 'vant';
 
 NProgress.configure({ showSpinner: false });
 
@@ -51,8 +51,6 @@ router.beforeEach((to, from, next) => {
     if (store.getters.name === '') {
       store.dispatch('GetInfo', { code: code, state: state }).then(() => {
         next();
-      }).catch((err) => {
-        Toast(err);
       });
     } else {
       next();

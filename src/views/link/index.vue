@@ -3,22 +3,22 @@
     <div class="input-area">
       <div class="title">请输入原始段子</div>
       <van-cell-group class="textarea">
-        <van-field v-model="value" type="textarea" placeholder="" />
+        <van-field v-model="old_link" type="textarea" placeholder="" :disabled="new_link !== ''"/>
       </van-cell-group>
-      <van-button type="danger" class="btn">一键转链</van-button>
+      <van-button v-if="new_link === ''" type="danger" class="btn" @click="doSubmit">一键转链</van-button>
     </div>
-    <div class="result-area">
+    <div class="result-area" v-if="new_link !== ''">
       <div class="title">可直接编辑</div>
       <van-cell-group>
-        <van-field v-model="value" type="textarea" />
+        <van-field v-model="new_link" type="textarea" />
       </van-cell-group>
       <div class="footer"></div>
       <div class="btns">
         <div class="left">
-          <van-button type="danger" size="small">发送到微信</van-button>
+          <van-button type="danger" size="small" @click="doSend">发送到微信</van-button>
         </div>
         <div class="right">
-          <van-button type="danger" size="small">一键复制</van-button>
+          <van-button type="danger" size="small" @click="handleClipboard(new_link, $event)">一键复制</van-button>
         </div>
       </div>
     </div>
@@ -26,15 +26,38 @@
 </template>
 
 <script>
+import { transLink, sendWechat } from '@/api/link';
+import clipboard from '@/utils/clipboard';
+
 export default {
   name: 'LinkIndex',
   data() {
     return {
-      value: ''
+      old_link: '',
+      new_link: ''
     };
   },
   methods: {
-
+    async doSubmit() {
+      if (this.old_link === '') {
+        this.$toast('请输入原始段子~');
+        return false;
+      }
+      const data = await transLink(this.old_link);
+      this.new_link = data.link;
+    },
+    doSend() {
+      if (this.new_link === '') {
+        this.$toast('文案为空, 无法发送~');
+        return false;
+      }
+      sendWechat(this.new_link).then(() => {
+        this.$toast('发送成功！');
+      });
+    },
+    handleClipboard(text, event) {
+      clipboard(text, event);
+    }
   }
 };
 </script>

@@ -62,6 +62,18 @@ const auth = {
         });
       });
     },
+    // 前端登出
+    FedLogOut({ commit }) {
+      return new Promise((resolve) => {
+        commit('SET_TOKEN', '');
+        commit('SET_NAME', '');
+        commit('SET_USERINFO', {});
+        commit('SET_AVATAR', '');
+        commit('SET_UNIONID', '');
+        removeToken();
+        resolve();
+      });
+    },
     // 登出
     LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {
@@ -70,6 +82,7 @@ const auth = {
           commit('SET_NAME', '');
           commit('SET_USERINFO', {});
           commit('SET_AVATAR', '');
+          commit('SET_UNIONID', '');
           removeToken();
           resolve();
         }).catch(error => {
