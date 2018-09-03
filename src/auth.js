@@ -35,9 +35,9 @@ router.beforeEach((to, from, next) => {
     setAuthCode(code);
     store.dispatch('OauthLogin', { code: code, state: state }).then(() => {
       const path = getRedirectRoute();
-      next({ path: path });
       removeRedirectUri();
       removeRedirectRoute();
+      window.location.href = path;
     }).catch(() => {
       Dialog.alert({
         message: '授权登录失败，请重试~'
@@ -58,7 +58,7 @@ router.beforeEach((to, from, next) => {
   } else {
     const url = getAuthUrl(encodeURIComponent(window.location.href));
     setRedirectUri(url);
-    setRedirectRoute(to.path);
+    setRedirectRoute(window.location.href);
     window.location.href = url;
   }
 });

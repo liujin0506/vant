@@ -16,15 +16,14 @@
       <div class="price">
         <van-tag type="danger">券后价</van-tag> {{ detail.real_price }} <span class="unit">元</span>
       </div>
-      <van-button type="danger" class="btn" v-if="unionid !== ''">一键推广</van-button>
-      <van-button type="danger" class="btn" v-if="unionid === ''">确认绑定</van-button>
-      <van-button type="danger" class="btn" plain>原始文案</van-button>
+      <van-button type="danger" class="btn" v-if="unionid !== ''" @click="doSpread">一键推广</van-button>
+      <van-button type="danger" class="btn" v-if="unionid === ''" @click="doBind">确认绑定</van-button>
     </div>
   </div>
 </template>
 
 <script>
-import { getDetail } from '@/api/home';
+import { getDetail, onekeySpread } from '@/api/home';
 import store from '@/store';
 
 export default {
@@ -48,6 +47,18 @@ export default {
         this.detail = res;
         this.images[0] = res.img_url;
         this.loading = false;
+      });
+    },
+    doBind() {
+      this.$router.push({ path: '/user/bind' });
+    },
+    doSpread() {
+      onekeySpread(this.$route.params.id, {}).then((res) => {
+        this.$toast({
+          message: '推广成功',
+          forbidClick: true
+        });
+        this.button = false;
       });
     }
   }

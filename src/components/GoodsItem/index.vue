@@ -31,6 +31,7 @@
 
 <script>
 import store from '@/store';
+import { onekeySpread } from '@/api/home';
 
 export default {
   name: 'goods-item',
@@ -64,11 +65,13 @@ export default {
         });
         return false;
       }
-      this.$toast({
-        message: '推广成功',
-        forbidClick: true
+      onekeySpread(this.id, {}).then((res) => {
+        this.$toast({
+          message: '推广成功',
+          forbidClick: true
+        });
+        this.button = false;
       });
-      this.button = false;
     },
     goDetail() {
       const id = this.id;

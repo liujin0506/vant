@@ -10,3 +10,9 @@ export const getDetail = (id) => request({
   url: '/goods/detail/' + id,
   method: 'get'
 });
+
+export const onekeySpread = (id, data) => request({
+  url: '/goods/spread/' + id,
+  method: 'post',
+  data: data
+});
