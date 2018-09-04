@@ -65,6 +65,7 @@ export default {
         });
         return false;
       }
+      this.$toast.loading({ duration: 0, forbidClick: true, message: '加载中...' });
       onekeySpread(this.id, {}).then((res) => {
         this.$toast({
           message: '推广成功',
@@ -92,8 +93,6 @@ export default {
       height: 22px;
       line-height: 22px;
       .commission {
-        height: 20px;
-        line-height: 20px;
         width: 80px;
         float: left;
         border: solid 1px #E01D26;
@@ -101,12 +100,16 @@ export default {
         border-radius: 5px;
         text-align: center;
         .left {
+          height: 20px;
+          line-height: 22px;
           background: #E01D26;
           width: 50%;
           float: left;
           color: #ffffff;
         }
         .right {
+          height: 20px;
+          line-height: 22px;
           width: 50%;
           float: right;
           color: #E01D26;
@@ -145,8 +148,11 @@ export default {
       color: #ffffff;
       background: #E01D26;
       border: solid 1px #E01D26;
+      font-size: 13px;
       width: 58px;
       border-radius: 5px;
+      height: 22px;
+      line-height: 22px;
     }
     .van-button--disabled{
       color: #666;

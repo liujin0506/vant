@@ -16,7 +16,7 @@
       <div class="price">
         <van-tag type="danger">券后价</van-tag> {{ detail.real_price }} <span class="unit">元</span>
       </div>
-      <van-button type="danger" class="btn" v-if="unionid !== ''" @click="doSpread">一键推广</van-button>
+      <van-button type="danger" class="btn" v-if="unionid !== ''" :disabled="spread" @click="doSpread">一键推广</van-button>
       <van-button type="danger" class="btn" v-if="unionid === ''" @click="doBind">确认绑定</van-button>
     </div>
   </div>
@@ -29,6 +29,7 @@ import store from '@/store';
 export default {
   data() {
     return {
+      spread: false,
       unionid: store.getters.union_id,
       loading: false,
       detail: {
@@ -53,12 +54,13 @@ export default {
       this.$router.push({ path: '/user/bind' });
     },
     doSpread() {
+      this.$toast.loading({ duration: 0, forbidClick: true, message: '加载中...' });
       onekeySpread(this.$route.params.id, {}).then((res) => {
         this.$toast({
           message: '推广成功',
           forbidClick: true
         });
-        this.button = false;
+        this.spread = true;
       });
     }
   }
@@ -84,8 +86,6 @@ export default {
       font-size: 16px;
       .commission {
         margin-right: 5px;
-        height: 20px;
-        line-height: 20px;
         width: 80px;
         float: left;
         border: solid 1px #E01D26;
@@ -93,12 +93,16 @@ export default {
         border-radius: 5px;
         text-align: center;
         .left {
+          height: 20px;
+          line-height: 22px;
           background: #E01D26;
           width: 50%;
           float: left;
           color: #ffffff;
         }
         .right {
+          height: 20px;
+          line-height: 22px;
           width: 50%;
           float: right;
           color: #E01D26;

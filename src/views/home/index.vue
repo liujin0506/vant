@@ -49,7 +49,7 @@ export default {
     return {
       filter: {
         category_id: 0,
-        recommand: 1,
+        is_recommend: 1,
         page: 1,
         keyword: '',
         per_page: 15
