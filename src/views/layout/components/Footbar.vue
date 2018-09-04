@@ -16,6 +16,8 @@
 <script>
 import { mapGetters } from 'vuex';
 import { validateURL } from '@/utils/validate';
+import { shareJs } from '@/utils/share';
+import store from '@/store';
 
 export default {
   data() {
@@ -43,6 +45,15 @@ export default {
       }
     });
     this.active = active;
+
+    const jssdk = store.getters.userinfo.jssdk;
+    const optionData = {
+      title: '京好赚',
+      desc: '京好赚',
+      link: window.location.origin,
+      imgUrl: jssdk.share_img
+    };
+    shareJs(jssdk, optionData);
   },
   methods: {
     isExternalLink(routePath) {
