@@ -67,6 +67,7 @@ export default {
   methods: {
     async getIndex() {
       this.loading = true;
+      this.$toast.loading({ duration: 0, forbidClick: true, message: '加载中...' });
       const data = await getList(this.filter);
       if (data.current_page === 1) {
         if (data.swiper && data.swiper.length > 0) {
@@ -82,6 +83,7 @@ export default {
         this.finished = true;
       }
       this.loading = false;
+      this.$toast.clear();
     },
     onLoad() {
       this.filter.page ++;
