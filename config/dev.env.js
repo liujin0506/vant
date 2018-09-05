@@ -3,6 +3,6 @@ var prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  BASE_API: '"http://wx.jd.risay.cn/"',
-  APP_ID:'"wx64bcdf9da14daba1"',
+  BASE_API: '"http://wx.jhz.bjue.cn/"',
+  APP_ID:'"wx693c794026c3d049"',
 })

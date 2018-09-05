@@ -1,5 +1,5 @@
 module.exports = {
   NODE_ENV: '"production"',
-  BASE_API: '""',
-  APP_ID:'"wx64bcdf9da14daba1"',
+  BASE_API: '"http://wx.jhz.bjue.cn/"',
+  APP_ID:'"wx693c794026c3d049"',
 }

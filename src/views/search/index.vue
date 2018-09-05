@@ -1,10 +1,5 @@
 <template>
   <div class="search-index">
-    <van-swipe :autoplay="3000">
-      <van-swipe-item v-for="(item, index) in swiper" :key="index">
-        <img v-lazy="imgUrl + item.thumb" />
-      </van-swipe-item>
-    </van-swipe>
     <van-search
       v-model="filter.keyword"
       placeholder="请输入要搜索的宝贝标题或关键词"
@@ -13,6 +8,23 @@
     >
       <div slot="action" @click="onSearch">搜索</div>
     </van-search>
+    <van-tabs type="card" v-model="active" v-if="0">
+      <van-tab>
+        <div slot="title">
+          选项 <van-icon name="more-o" />
+        </div>
+      </van-tab>
+      <van-tab>
+        <div slot="title">
+          选项 <van-icon name="more-o" />
+        </div>
+      </van-tab>
+      <van-tab>
+        <div slot="title">
+          选项 <van-icon name="more-o" />
+        </div>
+      </van-tab>
+    </van-tabs>
     <van-tabs @click="switchTab">
       <van-tab title="全部" key="0"/>
       <van-tab v-for="cate in category" :title="cate.name" :key="cate.id"></van-tab>
@@ -57,7 +69,6 @@ export default {
       finished: false,
       imgUrl: process.env.BASE_API + '/',
       list: [],
-      swiper: [],
       filter: {
         category_id: 0,
         keyword: '',
@@ -76,9 +87,6 @@ export default {
       this.$toast.loading({ duration: 0, forbidClick: true, message: '加载中...' });
       const data = await getList(this.filter);
       if (data.current_page === 1) {
-        if (data.swiper && data.swiper.length > 0) {
-          this.swiper = data.swiper;
-        }
         this.list = data.data;
       } else {
         data.data.forEach((item) => {

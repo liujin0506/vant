@@ -71,8 +71,8 @@ export default {
 .home-detail {
   background: #ffffff;
   .van-swipe {
-    width: 100%;
-    height: 200px;
+    width: 90%;
+    margin: 0 auto;
     img {
       width: 100%;
     }
