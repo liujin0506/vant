@@ -77,11 +77,11 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .user-bind {
   background: #e5e5e5;
   padding: 10px 20px 0 20px;
-  min-height: calc(100vh - 45px);
+  min-height: calc(100vh - 50px);
   .head {
     background: #fff;
     border-radius: 15px;
@@ -139,7 +139,7 @@ export default {
       font-size: 13px;
       line-height: 20px;
       color: #666;
-      margin: 3px 0 10px 0;
+      margin: 3px 0;
       p {
         margin: 0;
         span {

@@ -22,6 +22,11 @@ export default {
       title: this.$route.meta.title
     };
   },
+  watch: {
+    $route(to, from) {
+      this.title = this.$route.meta.title;
+    }
+  },
   components: {
 
   },
