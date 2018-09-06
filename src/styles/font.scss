@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'custom-iconfont';
+  src: url('./fonts/iconfont.ttf') format('truetype');
+}
+
+.van-icon {
+  font-family: 'vant-icon', 'custom-iconfont' !important;
+}
+
+.van-icon-arraw-both:before {
+  content: '\eb9a';
+}
+
+.van-icon-arraw-up:before {
+  content: '\eb8a';
+}
+
+.van-icon-arraw-down:before {
+  content: '\eb8b';
+}

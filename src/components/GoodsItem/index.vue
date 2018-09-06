@@ -7,10 +7,10 @@
       <div slot="title" @click="goDetail">
         <div class="title">
           <div class="commission">
-            <div class="left">佣金</div>
-            <div class="right">{{ commision }}%</div>
+            <div class="left">券</div>
+            <div class="right">￥{{ discount * 100 / 100 }}</div>
           </div>
-          <span class="expire">有效期至 {{ endDay }}</span>
+          <span class="expire"><div>赚</div> {{ commision }}%</span>
         </div>
       </div>
       <div slot="desc" @click="goDetail">
@@ -18,6 +18,7 @@
       </div>
       <div slot="tags" @click="goDetail">
         <div class="price">
+          <span class="text">券后价</span>
           <span class="curr">￥{{ realPrice }}</span>
           <span class="real">￥{{ price }}</span>
         </div>
@@ -93,32 +94,43 @@ export default {
       height: 22px;
       line-height: 22px;
       .commission {
-        width: 80px;
+        width: 70px;
         float: left;
         border: solid 1px #E01D26;
+        color: #E01D26;
         font-size: 13px;
         border-radius: 5px;
         text-align: center;
         .left {
           height: 20px;
           line-height: 22px;
-          background: #E01D26;
-          width: 50%;
+          width: 24px;
           float: left;
-          color: #ffffff;
         }
         .right {
+          border-left: solid 1px #E01D26;
           height: 20px;
           line-height: 22px;
-          width: 50%;
+          width: 45px;
           float: right;
-          color: #E01D26;
         }
       }
       .expire {
         font-size: 12px;
         float: right;
-        color: #666666;
+        color: #E01D26;
+        height: 18px;
+        line-height: 18px;
+        div {
+          float: left;
+          background: #E01D26;
+          color: #ffffff;
+          width: 18px;
+          height: 18px;
+          line-height: 18px;
+          border-radius: 50%;
+          text-align: center;
+        }
       }
     }
     .desc {
@@ -133,7 +145,12 @@ export default {
     .price {
       bottom: 5px;
       position: absolute;
+      .text {
+        font-size: 12px;
+        color: #666666;
+      }
       .curr {
+        margin-left: -5px;
         color: #E01D26;
       }
       .real {

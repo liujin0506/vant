@@ -29,6 +29,7 @@
       :commision="item.commision_ratio_wl"
       :price="item.wl_unit_price"
       :realPrice="item.real_price"
+      :discount="item.discount"
       ></goods-item>
       <div class="no-item" v-if="list.length === 0">
         <van-icon name="info-o" size="60px"/>
