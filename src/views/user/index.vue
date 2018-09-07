@@ -13,7 +13,7 @@
       <van-cell icon="exchange" title="新手教程" is-link url="https://mp.weixin.qq.com/mp/homepage?__biz=MzU5NTY5NTQ2OQ%3D%3D&hid=1&sn=f9fd12cda086d9dda29dc970c4cc43ee"/>
       <van-cell icon="gold-coin" title="我的佣金" is-link url="https://lmapp.jd.com/report"/>
       <van-cell icon="gift" title="注册京粉" is-link url="https://lmapp.jd.com/register.jsp?inviteCode=zVRA2zVJ&isHide=1&extendedParameter=jinghaozhuan"/>
-      <van-cell icon="contact" title="关于我们" is-link url="https://mp.weixin.qq.com/mp/homepage?__biz=MzU5NTY5NTQ2OQ%3D%3D&hid=1&sn=f9fd12cda086d9dda29dc970c4cc43ee"/>
+      <van-cell icon="contact" title="关于我们" is-link url="https://mp.weixin.qq.com/s/qrZtMNM0UATAmIPpqW8sfQ"/>
     </van-cell-group>
   </div>
 </template>
