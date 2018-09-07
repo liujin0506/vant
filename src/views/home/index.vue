@@ -13,6 +13,29 @@
     >
       <div slot="action" @click="onSearch">搜索</div>
     </van-search>
+    <van-row class="sortable">
+      <van-col span="8" class="item"
+        :class="filter.sort_type === 'common' ? 'active' : ''"
+      ><a @click="doSort('common')">综合</a></van-col>
+      <van-col span="8" class="item"
+        :class="filter.sort_type === 'repay' ? 'active' : ''"
+      >
+        <a @click="doSort('repay')">佣金
+          <van-icon v-if="filter.sort_type === 'repay' && filter.sort === 'desc'" name="arraw-down" />
+          <van-icon v-else-if="filter.sort_type === 'repay' && filter.sort === 'asc'" name="arraw-up" />
+          <van-icon v-else name="arraw-both" />
+        </a>
+      </van-col>
+      <van-col span="8" class="item"
+        :class="filter.sort_type === 'price' ? 'active' : ''"
+      >
+        <a @click="doSort('price')">价格
+          <van-icon v-if="filter.sort_type === 'price' && filter.sort === 'desc'" name="arraw-down" />
+          <van-icon v-else-if="filter.sort_type === 'price' && filter.sort === 'asc'" name="arraw-up" />
+          <van-icon v-else name="arraw-both" />
+        </a>
+      </van-col>
+    </van-row>
     <van-list
       v-model="loading"
       :finished="finished"
@@ -53,7 +76,9 @@ export default {
         is_recommend: 1,
         page: 1,
         keyword: '',
-        per_page: 15
+        per_page: 15,
+        sort_type: 'common',
+        sort: 'asc'
       },
       loading: false,
       finished: false,
@@ -94,6 +119,17 @@ export default {
       this.filter.page = 1;
       this.getIndex();
     },
+    doSort(type) {
+      if (this.filter.sort_type !== type) {
+        this.filter.sort = 'asc';
+      }
+      this.filter.sort_type = type;
+      if (this.filter.sort_type !== 'common') {
+        this.filter.sort = this.filter.sort === 'asc' ? 'desc' : 'asc';
+      }
+      this.filter.page = 1;
+      this.getIndex();
+    },
     link(url) {
       console.log(url);
       window.location.href = url;
@@ -107,9 +143,25 @@ export default {
   background: #ffffff;
   .van-swipe {
     width: 100%;
-    height: 155px;
+    height: 150px;
     img {
       width: 100%;
+    }
+  }
+  .sortable {
+    .item {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 13px;
+      a {
+        display: block;
+        width: 100%;
+      }
+    }
+    .active {
+      color: #E01D26;
+      font-weight: bold;
     }
   }
   .no-item {
