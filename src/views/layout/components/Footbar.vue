@@ -61,9 +61,9 @@ export default {
     const jssdk = store.getters.userinfo.jssdk;
     const optionData = {
       title: '京好赚',
-      desc: '京好赚',
+      desc: '京东官方运营团队、海量高佣品质好物，为您带来更优质、更专业的京东返佣服务首选平台。',
       link: window.location.origin,
-      imgUrl: jssdk.share_img
+      imgUrl: 'http://wx.jhz.bjue.cn/upload/logo.jpg'
     };
     shareJs(jssdk, optionData);
   },
