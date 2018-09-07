@@ -135,7 +135,8 @@ export default {
     }
     .desc {
       margin: 5px 0 3px 0;
-      font-size: 14px;
+      font-size: 13px;
+      line-height: 20px;
       overflow : hidden;
       text-overflow: ellipsis;
       display: -webkit-box;

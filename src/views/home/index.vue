@@ -2,7 +2,9 @@
   <div class="home-index">
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(item, index) in swiper" :key="index">
-        <img v-lazy="imgUrl + item.thumb" />
+        <a :href="item.link">
+          <img v-lazy="imgUrl + item.thumb" />
+        </a>
       </van-swipe-item>
     </van-swipe>
     <van-search
@@ -103,7 +105,7 @@ export default {
   background: #ffffff;
   .van-swipe {
     width: 100%;
-    height: 200px;
+    height: 160px;
     img {
       width: 100%;
     }
