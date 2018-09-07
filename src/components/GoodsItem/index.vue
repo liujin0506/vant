@@ -94,24 +94,24 @@ export default {
       height: 22px;
       line-height: 22px;
       .commission {
-        width: 70px;
+        width: 60px;
         float: left;
         border: solid 1px #E01D26;
         color: #E01D26;
-        font-size: 13px;
+        font-size: 12px;
         border-radius: 5px;
         text-align: center;
         .left {
-          height: 20px;
+          height: 16px;
           line-height: 22px;
-          width: 24px;
+          width: 21px;
           float: left;
         }
         .right {
           border-left: solid 1px #E01D26;
           height: 20px;
           line-height: 22px;
-          width: 45px;
+          width: 38px;
           float: right;
         }
       }
@@ -130,6 +130,7 @@ export default {
           line-height: 18px;
           border-radius: 50%;
           text-align: center;
+          margin-right: 2px;
         }
       }
     }
@@ -147,15 +148,16 @@ export default {
       bottom: 5px;
       position: absolute;
       .text {
-        font-size: 12px;
+        font-size: 10px;
         color: #666666;
       }
       .curr {
+        font-size: 14px;
         margin-left: -5px;
         color: #E01D26;
       }
       .real {
-        font-size: 12px;
+        font-size: 10px;
         color: #666666;
         text-decoration:line-through;
       }
@@ -169,8 +171,8 @@ export default {
       font-size: 13px;
       width: 58px;
       border-radius: 5px;
-      height: 22px;
-      line-height: 22px;
+      height: 21px;
+      line-height: 21px;
     }
     .van-button--disabled{
       color: #666;

@@ -2,9 +2,7 @@
   <div class="home-index">
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(item, index) in swiper" :key="index">
-        <a :href="item.link">
-          <img v-lazy="imgUrl + item.thumb" />
-        </a>
+        <img v-lazy="imgUrl + item.thumb" @click="link(item.link)"/>
       </van-swipe-item>
     </van-swipe>
     <van-search
@@ -95,6 +93,10 @@ export default {
     onSearch() {
       this.filter.page = 1;
       this.getIndex();
+    },
+    link(url) {
+      console.log(url);
+      window.location.href = url;
     }
   }
 };
@@ -105,7 +107,7 @@ export default {
   background: #ffffff;
   .van-swipe {
     width: 100%;
-    height: 160px;
+    height: 155px;
     img {
       width: 100%;
     }
