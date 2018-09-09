@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Dialog } from 'vant';
+import { Dialog, Toast } from 'vant';
 import store from '../store';
 import { getToken } from '@/utils/auth';
 
@@ -42,11 +42,7 @@ service.interceptors.response.use(
           });
         });
       } else {
-        Dialog.alert({
-          message: message
-        }).then(() => {
-          // on close
-        });
+        Toast(message);
       }
       return Promise.reject(error);
     }
