@@ -10,7 +10,7 @@
             <div class="left">券</div>
             <div class="right">￥{{ discount * 100 / 100 }}</div>
           </div>
-          <span class="expire"><div>赚</div> {{ realPrice * commision / 100 }}元</span>
+          <span class="expire"><div>赚</div> {{ parseInt(realPrice * commision) / 100 }}元</span>
         </div>
       </div>
       <div slot="desc" @click="goDetail">

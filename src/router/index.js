@@ -41,7 +41,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/home/index'),
         name: 'home/index',
-        meta: { title: '首页', icon: 'home', showFoot: true, auth: true, active: 'home' }
+        meta: { title: '京好赚', icon: 'home', showFoot: true, auth: true, active: 'home' }
       },
       {
         path: 'detail/:id(\\d+)',
